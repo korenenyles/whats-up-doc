@@ -1,9 +1,9 @@
 from django.shortcuts import render, reverse, HttpResponseRedirect
 from bugticket.forms import SignUpForm, LoginForm
 from django.contrib.auth import login, logout, authenticate
-from bugticket.models import CustomUser
+from bugticket.models import CustomUser, Ticket
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+
 @login_required
 def homeView(request):
     html = 'index.html'
@@ -22,7 +22,6 @@ def signUpView(request):
                 username=data['username'],
                 display_name=data['display_name'],
                 password=data['password1'],
-                
                 )
             new_user.save()
             login(request, new_user)
@@ -45,8 +44,11 @@ def loginview(request):
                 )
     form = LoginForm()
     return render(request,'login.html', {'form': form})
-    
 
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+def ticket_view(request, id):
+    ticket = Ticket.objects.get(id=id)
+    return render(request, 'index.html', {'ticket': ticket})
