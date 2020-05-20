@@ -3,8 +3,26 @@
 
 {% if user.is_authenticated %}
   <h2>Hi <b><u>{{ user.username }}!</b></h2></u>
-  <p>Display Name: <em><b><u>{{user.display_name}}</em></b></u></p>
-  <p> That's all for now!!</p>
+  
+<details> 
+<summary>Create Ticket</summary>
+<form action="" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Add Ticket">
+</form>
+</details>
+
+<div>
+{%for ticket in ticket_data%}
+    <p><a href = {% url 'ticket_detail' id=ticket.id%}>{{ticket.title}}</a>|{{ticket.date}}|{{ticket.ticket_status}} 
+    </p>
+{% endfor %}
+
+
+
+
+
   <p><a href="{% url 'logout' %}"><button>logout</button></a></p>
   
 <a href = {% url 'signup'%}> <button>Create New Account</button></a>
