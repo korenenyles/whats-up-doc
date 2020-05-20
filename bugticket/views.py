@@ -49,6 +49,7 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
 
-def ticket_view(request, id):
+def ticket_detail(request, id):
+    html = 'ticket_detail.html'
     ticket = Ticket.objects.get(id=id)
-    return render(request, 'index.html', {'ticket': ticket})
+    return render(request, html, {'ticket': ticket})
