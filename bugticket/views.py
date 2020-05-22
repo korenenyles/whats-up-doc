@@ -50,6 +50,7 @@ def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
 
+@login_required
 def create_ticket(request, user_id):
     html = "createticketform.html"
     if request.method == "POST":
@@ -66,12 +67,13 @@ def create_ticket(request, user_id):
     form = TicketForm()
     return render(request,html , {"form": form})
 
-
+@login_required
 def ticket_detail(request, id):
     html = 'ticket_detail.html'
     ticket = Ticket.objects.get(id=id)
     return render(request, html, {'ticket': ticket})
 
+@login_required
 def inprogress_ticket(request, ticket_id):
     #Peter Marsh assisted with fixing view
     ticket = Ticket.objects.get(id=ticket_id)
@@ -81,6 +83,7 @@ def inprogress_ticket(request, ticket_id):
     ticket.save()
     return HttpResponseRedirect(reverse('ticket_detail', args=(ticket_id,)))
 
+@login_required
 def complete_ticket(request, ticket_id):
     ticket= Ticket.objects.get(id=ticket_id)
     ticket.ticket_status = "DONE"
@@ -88,7 +91,8 @@ def complete_ticket(request, ticket_id):
     ticket.assigned_user = None
     ticket.save()
     return HttpResponseRedirect(reverse('ticket_detail', args=(ticket_id,)))
-   
+
+@login_required
 def invalid_ticket(request, ticket_id):
     ticket= Ticket.objects.get(id=ticket_id)
     ticket.ticket_status = "INVALID"
@@ -97,7 +101,9 @@ def invalid_ticket(request, ticket_id):
     ticket.save()
     return HttpResponseRedirect(reverse('ticket_detail', args=(ticket_id,)))
 
+@login_required
 def edit_ticket(request, ticket_id):
+    #followed demo by Instructor Joe
     ticket = Ticket.objects.get(id=ticket_id)
     if request.method == "POST":
         form = TicketForm(request.POST)
@@ -113,6 +119,7 @@ def edit_ticket(request, ticket_id):
     })
     return render(request, 'createticketform.html', {'form': form})
 
+@login_required
 def user_detail(request, user_id):
     filed_ticket = Ticket.objects.filter(filed_user=user_id)
     assigned_ticket = Ticket.objects.filter(assigned_user=user_id)
