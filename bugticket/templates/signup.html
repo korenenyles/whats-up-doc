@@ -1,3 +1,11 @@
+<html>
+{% load static %}
+<head>
+<title> Bug Tracker - SignUp</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body class = 'header'>
 
 <h2>Sign up</h2>
 <form method="post">
@@ -6,3 +14,6 @@
   <button type="submit">Sign up</button>
 </form>
 <a href = {% url 'login'%}> <button>LogIn</button></a>
+<p><a href={%url 'home'%}><button>Home</button></a></p>
+</body>
+</html>

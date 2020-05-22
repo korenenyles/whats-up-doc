@@ -124,3 +124,4 @@ AUTH_USER_MODEL = 'bugticket.CustomUser'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]

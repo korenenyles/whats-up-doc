@@ -1,3 +1,11 @@
+<html>
+{% load static %}
+<head>
+<title> Bug Tracker - User Detail Page</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
 <h1> User Details:</h1>
 
 <h2>User Name: {{user}}</h2>
@@ -16,3 +24,5 @@
 {%endfor%}
 
 <a href = {% url 'home'%}><button>Home</button></a>
+</body>
+</html>

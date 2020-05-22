@@ -1,17 +1,28 @@
-<h1>Ticket Detail:</h1>
+<html>
+{%load static%}
+<head>
+    <title> Bug Tracker - Ticket Detail</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<h3>Title: {{ticket.title}}</h3>
-<p>Date: {{ticket.date}}</p>
-<p>Description: {{ticket.description}}</p>
-<p>Filed by: {{ticket.filed_user}}</p>
-<p>Ticket Status: {{ticket.ticket_status}}</p>
-<p>Assigned to: {{ticket.assigned_user}}</p>
-<p>Completed by: {{ticket.completed_user}}</p>
+</head>
+<body>
 
-<a href={%url 'in_progress' ticket_id=ticket.id%}><button>In Progress</button></a>
-<a href={%url 'invalid' ticket_id=ticket.id%}><button>Invalid</button></a>
-<a href={%url 'done' ticket_id=ticket.id%}><button>Complete</button></a>
-<a href={%url 'edit' ticket_id=ticket.id%}><button>Edit</button></a>
+    <h1 class = 'header'>Ticket Detail:</h1>
 
-<br>
-<p><a href={%url 'home'%}><button>Home</button></a></p>
+    <h3>Title: {{ticket.title}}</h3>
+    <p>Date: {{ticket.date}}</p>
+    <p>Description: {{ticket.description}}</p>
+    <p>Filed by: {{ticket.filed_user}}</p>
+    <p>Ticket Status: {{ticket.ticket_status}}</p>
+    <p>Assigned to: {{ticket.assigned_user}}</p>
+    <p>Completed by: {{ticket.completed_user}}</p>
+
+    <a href={%url 'in_progress' ticket_id=ticket.id%}><button>In Progress</button></a>
+    <a href={%url 'invalid' ticket_id=ticket.id%}><button>Invalid</button></a>
+    <a href={%url 'done' ticket_id=ticket.id%}><button>Complete</button></a>
+    <a href={%url 'edit' ticket_id=ticket.id%}><button>Edit</button></a>
+
+    <br>
+    <p><a href={%url 'home'%}><button>Home</button></a></p>
+</body>
+</html>

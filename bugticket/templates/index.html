@@ -1,12 +1,17 @@
+
 <html>
+{% load static %}
 <head>
 
-<title> Bug Tracker</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<title> Bug Tracker - Home</title>
 
 </head>
 
-
 <body>
+<div class = 'header'>
+<h1> Bug Tracker</h1>
 <h1>Home</h1>
 
 
@@ -16,8 +21,9 @@
 | <a href = {% url 'signup'%}> <button>Create New Account</button></a> |
 <a href = {% url 'create_ticket' user_id=user.id%}><button>Create Ticket</button></a> |
 <a href="{% url 'logout' %}"><button>logout</button></a> | 
-
-<div>
+</div>
+<div class = 'ticketcontainer'>
+<div class = 'column'>
 <h3>New Tickets:</h3>
 {%for ticket in ticket_data%}
 {% if ticket.ticket_status == "NEW"%}
@@ -28,7 +34,7 @@
 {% endfor %}
 </div>
 
-<div>
+<div class = "column" >
 <h3> In Progress Tickets:</h3>
 {%for ticket in ticket_data%}
 {% if ticket.ticket_status == "IN PROGRESS"%}
@@ -39,7 +45,7 @@
 {% endfor %}
 </div>
 
-<div>
+<div class = 'column'>
 <h3>Completed Tickets:</h3>
 {%for ticket in ticket_data%}
 {% if ticket.ticket_status == "DONE"%}
@@ -49,7 +55,7 @@
 {% endfor %}
 </div>
 
-<div>
+<div class = 'column'>
 <h3>Invalid Tickets:</h3>
 {%for ticket in ticket_data%}
 {% if ticket.ticket_status == "INVALID"%}
@@ -57,6 +63,7 @@
       | Filed by: <a href = {%url 'user_detail' user.id%}>{{ticket.filed_user}}</a> -- Status: {{ticket.ticket_status}} </p>
     {%endif%}
 {% endfor %}
+</div>
 </div>
 
 {% endif %}
