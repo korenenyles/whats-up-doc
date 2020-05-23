@@ -7,8 +7,8 @@
 </head>
 <body>
 
-    <h1 class = 'header'>Ticket Detail:</h1>
-
+    <h1 class = 'center'>Ticket Detail:</h1>
+<div class = 'center'>
     <h3>Title: {{ticket.title}}</h3>
     <p>Date: {{ticket.date}}</p>
     <p>Description: {{ticket.description}}</p>
@@ -16,7 +16,7 @@
     <p>Ticket Status: {{ticket.ticket_status}}</p>
     <p>Assigned to: {{ticket.assigned_user}}</p>
     <p>Completed by: {{ticket.completed_user}}</p>
-
+</div>
     <a href={%url 'in_progress' ticket_id=ticket.id%}><button>In Progress</button></a>
     <a href={%url 'invalid' ticket_id=ticket.id%}><button>Invalid</button></a>
     <a href={%url 'done' ticket_id=ticket.id%}><button>Complete</button></a>

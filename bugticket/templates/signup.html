@@ -5,15 +5,17 @@
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
-<body class = 'header'>
+<body >
 
-<h2>Sign up</h2>
-<form method="post">
+<h2 class = 'center'>Sign up</h2>
+<form method="post" class = 'center'>
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Sign up</button>
 </form>
-<a href = {% url 'login'%}> <button>LogIn</button></a>
-<p><a href={%url 'home'%}><button>Home</button></a></p>
+<div class= 'header'>
+<p> <a href = {% url 'login'%}> <button>LogIn</button></a> |
+<a href={%url 'home'%}><button>Home</button></a></p>
+</div>
 </body>
 </html>
